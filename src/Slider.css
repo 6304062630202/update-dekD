@@ -5,6 +5,7 @@
   align-items: center;
   width: 100%;
   overflow: hidden;
+  max-height: 1200px;
 }
 
 .slider-container {
@@ -69,29 +70,22 @@
   display: flex;
   position: absolute;
   bottom: 1rem;
-  top: 26rem;
-}
-
-.dots {
-  display: flex;
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 15rem;
 }
 
 .dot {
   background-color: #ff9900;
-  height: 0.5rem;
+  height: 0.6rem;
   width: 0.5rem;
   border-radius: 100%;
   border: none;
   outline: none;
   box-shadow: 0px 0px 3px #565656;
-  margin: 0 0.8rem;
+  margin: 0 1rem;
   cursor: pointer;
 }
 
+
 .dot.dot-inactive {
-  background-color: #ffe2ab;
+  background-color: #fff;
 }
