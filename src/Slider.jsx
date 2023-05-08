@@ -27,7 +27,7 @@ const Slider = () => {
     setIsSlide(true);
     setStatus('next');
     
-    setTimeout(stopSliding, 50);
+    setTimeout(stopSlide, 0);
   };
 
   const slidePrev = () => {
@@ -36,14 +36,14 @@ const Slider = () => {
     setIsSlide(true);
     setStatus('prev');
 
-    setTimeout(stopSliding, 50);
+    setTimeout(stopSlide, 0);
   };
 
   const handleDotClick = (index) => {
     setSlideIndex(index);
   };
 
-  const stopSliding = () => setIsSlide(false)  
+  const stopSlide = () => setIsSlide(false)  
 
   const handlers = useSwipeable({
     onSwipedLeft: slideNext,
@@ -63,7 +63,6 @@ const Slider = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, [slideIndex]);
-
 
   return (
     <div {...handlers}>
