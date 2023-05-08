@@ -53,7 +53,7 @@ const Slider = () => {
     touchEventOptions: { passive: true },
   });
 
-  const getGap = (index) => { //show many pictures
+  const getGap = (index) => { 
     return index - slideIndex < 0 ? slides.length - Math.abs(index - slideIndex) : index - slideIndex;
   };
 
@@ -75,7 +75,7 @@ const Slider = () => {
                 src={slide.image}
                 alt={`Slide ${index+1}`}
                 className={`slide`}
-                style={{ gap: getGap(index) }}
+                style={{ order: getGap(index) }}
               />
             ))}
         </div>
