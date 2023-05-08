@@ -1,91 +1,104 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import "./Slider.css";
+import img1 from "./img/img1.png";
+import img2 from "./img/img2.png";
+import img3 from "./img/img3.png";
+import img4 from "./img/img4.png";
+import img5 from "./img/img5.png";
 
-const NEXT = 'next';
-const PREV = 'prev';
+const slides = [
+  { image: img1 },
+  { image: img2 },
+  { image: img3 },
+  { image: img4 },
+  { image: img5 },
+];
 
-const getOrder = (index, curSlile, numItems) => {
-  return index - curSlile < 0 ? numItems - Math.abs(index - curSlile) : index - curSlile;
-};
-
-const Slider = ( {children} ) => {
-  const numItems = React.Children.count(children);
-  const [ sliding, setSliding ] = useState(false);
-  const [ direction, setDirection ] = useState('');
-  const [ curSlile, setcurSlile ] = useState(0);
+const Slider = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [isSlide, setIsSlide] = useState(false);  
+  const [status, setStatus] = useState(''); //next,prev
 
   const slideNext = () => {
-    setSliding(true);
-    setDirection(NEXT);
-    setcurSlile(curSlile === numItems - 1 ? 0 : curSlile + 1);
-
+    let nextSlideIndex = slideIndex === slides.length - 1 ? 0 : slideIndex + 1 ;
+    setSlideIndex(nextSlideIndex);
+    setIsSlide(true);
+    setStatus('next');
+    
     setTimeout(stopSliding, 50);
   };
 
   const slidePrev = () => {
-    setSliding(true);
-    setDirection(PREV);
-    setcurSlile(curSlile === 0 ? numItems - 1 : curSlile - 1);
+    let prevSlideIndex = slideIndex === 0 ? slides.length - 1 : slideIndex - 1 ;
+    setSlideIndex(prevSlideIndex);
+    setIsSlide(true);
+    setStatus('prev');
 
     setTimeout(stopSliding, 50);
   };
 
-  const stopSliding = () => setSliding(false)
+  const handleDotClick = (index) => {
+    setSlideIndex(index);
+  };
 
-  const slide = (direction) => {
-    if (direction === NEXT) {
-      slideNext()
-    } else {
-      slidePrev()
-    }
-  }
+  const stopSliding = () => setIsSlide(false)  
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => slide(NEXT),
-    onSwipedRight: () => slide(PREV),
-    swipeDuration: 0,
-    preventScrollOnSwipe: true,
+    onSwipedLeft: slideNext,
+    onSwipedRight: slidePrev,
+    preventDefaultTouchmoveEvent: true,
     trackMouse: true,
-    onSwiped: (eventData) => console.log("User Swiped!", eventData),
-    onSwiping: () => console.log('swiping'),
-    onSwipedUp: () => console.log('up'),
     touchEventOptions: { passive: true },
   });
 
-  console.log('handler: ', handlers)
+  const getGap = (index) => { //show many pictures
+    return index - slideIndex < 0 ? slides.length - Math.abs(index - slideIndex) : index - slideIndex;
+  };
+
+  useEffect(() => {  // auto slide
+    const interval = setInterval(() => {
+      slideNext();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [slideIndex]);
+
 
   return (
-    <div {...handlers} style={{ touchAction: 'pan-y' }}>
+    <div {...handlers}>
       <div className='container'>
-        <div className={`slider-container ${direction} ${sliding && 'sliding'}`}>
-          {React.Children.map(children, (child, index) => (
-            <div className='slider-slot' style={{ order: getOrder(index, curSlile, numItems)}}>
-              {child}
-            </div>
-          ))}
+        <div className={`slider-container ${status} ${isSlide && 'isSlide'}`}> 
+            {slides.map((slide, index) => ( //check next,prev isSlide = false
+              <img
+                key={index}
+                src={slide.image}
+                alt={`Slide ${index+1}`}
+                className={`slide`}
+                style={{ gap: getGap(index) }}
+              />
+            ))}
         </div>
-        <div className="buttons-container">
-          <div className="button-container left">
-            <BsArrowLeftCircleFill onClick={() => slide(PREV)} />
+        <div className='buttons-container'>
+          <div className='button-container left'>
+            <BsArrowLeftCircleFill onClick={slidePrev} />
           </div>
-          <div className="button-container right">
-            <BsArrowRightCircleFill onClick={() => slide(NEXT)} />
+          <div className='button-container right'>
+            <BsArrowRightCircleFill onClick={slideNext} />
           </div>
         </div>
-        <div className="dots">
-          {React.Children.map(children, (_, idx) => (
+        <div className='dots'>
+          {slides.map((_, index) => (
             <button
-              key={idx}
-              className={curSlile === idx ? "dot" : "dot dot-inactive"}
-              onClick={() => setcurSlile(idx)}
-            ></button>
+              key={index}
+              className={`dot ${index === slideIndex ? "dot" : "dot dot-event"}`}
+              onClick={() => handleDotClick(index)}
+            />
           ))}
         </div>
       </div>
     </div>
-);
+  );
 };
 
 export default Slider;
