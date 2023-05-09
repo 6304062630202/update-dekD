@@ -126,6 +126,10 @@
     margin-right: 15px;
   }
 
+  .dots{
+    margin-top: 15px;
+  }
+
   .dot{
     margin: 0 10px;
     height: 9px;
@@ -152,7 +156,7 @@
   }
 
   .dots{
-    margin-top: 15px;
+    margin-top: 12px;
   }
 
   .dot{
@@ -170,6 +174,16 @@
     display: flex;
     transform: translateX(-103%);
     position: relative;
+  }
+
+  .slider-container.isSlide {
+    transition: none;
+  }
+  .slider-container.isSlide.next {
+    transform: translateX(-20%);
+  }
+  .slider-container.isSlide.prev {
+    transform: translateX(-60%);
   }
 
   .slider-container img {

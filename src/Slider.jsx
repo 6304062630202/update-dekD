@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import "./Slider.css";
@@ -56,6 +56,13 @@ const Slider = () => {
   const getGap = (index) => { 
     return index - slideIndex < 0 ? slides.length - Math.abs(index - slideIndex) : index - slideIndex;
   };
+
+  useEffect(() => {  // auto slide
+    const interval = setInterval(() => {
+      slideNext();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [slideIndex]);
 
   return (
     <div {...handlers}>
