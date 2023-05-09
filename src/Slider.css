@@ -104,7 +104,7 @@
   }
 
   .dot{
-    margin: 0 11px;
+    margin: 0 12px;
     height: 11px;
   }
 }
@@ -156,12 +156,12 @@
   }
 
   .dots{
-    margin-top: 12px;
+    margin-top: 10px;
   }
 
   .dot{
-    height: 8px;
-    margin: 0 7px;
+    height: 6px;
+    margin: 0 6px;
   }
 }
 
