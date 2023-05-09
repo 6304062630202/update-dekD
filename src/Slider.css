@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -25,16 +25,14 @@
 .slider-container img {
   position: relative;
   width: 50%;
-  height: 100%;
-  padding: 5px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  padding: 0 7px;
+  object-fit: cover;
 }
 
 .slide {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 .slide.slide-hidden {
   display: none;
@@ -42,7 +40,7 @@
 
 .buttons-container {
   position: absolute;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
   left: 0;
   right: 0;
@@ -52,9 +50,7 @@
 
 .button-container {
   filter: drop-shadow(0px 0px 3px #565656);
-  width: 50px;
   color: white;
-  font-size: 20px;
 }
 .button-container.left {
   margin-left: 30px;
@@ -67,9 +63,11 @@
 
 .dots {
   display: flex;
-  position: absolute;
   bottom: 20px;
-  margin-top: 30px;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
 }
 
 .dot {
@@ -80,9 +78,122 @@
   border: none;
   outline: none;
   box-shadow: 0px 0px 3px #565656;
-  margin: 0 1rem;
+  margin: 0 12px;
   cursor: pointer;
 }
 .dot.dot-event {
-  background-color: #fff;
-}/*# sourceMappingURL=Slider.css.map */
+  background-color: #c1b2a1;
+}
+
+
+@media (max-width: 1444px) {
+  .container {
+    max-width: 100%;
+  }
+  .slider-container img {
+    width: 50%;
+    height: auto;
+  }
+  .button-container.left {
+    font-size: 40px;
+    margin-left: 15px;
+  }
+  .button-container.right {
+    font-size: 40px;
+    margin-right: 15px;
+  }
+
+  .dot{
+    margin: 0 11px;
+    height: 11px;
+  }
+}
+
+@media (max-width: 1026px) {
+  .container {
+    max-width: 100%;
+  }
+  .slider-container img {
+    width: 50%;
+    height: auto;
+  }
+  .button-container.left {
+    font-size: 40px;
+    margin-left: 15px;
+  }
+  .button-container.right {
+    font-size: 40px;
+    margin-right: 15px;
+  }
+
+  .dot{
+    margin: 0 10px;
+    height: 9px;
+  }
+}
+
+@media (max-width: 770px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .slider-container img {
+    width: 50%;
+    height: auto;
+    padding: 0 4px;
+  }
+  .button-container.left {
+    font-size: 30px;
+    margin-left: 15px;
+  }
+  .button-container.right {
+    font-size: 30px;
+    margin-right: 15px;
+  }
+
+  .dots{
+    margin-top: 15px;
+  }
+
+  .dot{
+    height: 8px;
+    margin: 0 7px;
+  }
+}
+
+@media (max-width: 428px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .slider-container {
+    display: flex;
+    transform: translateX(-103%);
+    position: relative;
+  }
+
+  .slider-container img {
+    width: 100%;
+    height: auto;
+    padding: 0 4px;
+  }
+  .button-container.left {
+    font-size: 25px;
+    margin-left: 15px;
+  }
+  .button-container.right {
+    font-size: 25px;
+    margin-right: 15px;
+  }
+
+  .dots{
+    margin-top: 7px;
+  }
+
+  .dot{
+    height: 5px;
+    width: 6px;
+    margin: 0 4px;
+    padding: 0 2px;
+  }
+}
