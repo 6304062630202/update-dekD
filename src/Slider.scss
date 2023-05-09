@@ -10,7 +10,6 @@
   display: flex;
   transition: transform .60s ease-in;
   transform: translateX(-75%);
-  margin-right: 20px;
   position: relative;
 
   &.isSlide {
@@ -18,7 +17,7 @@
   }
 
   &.isSlide.next {
-    transform: translateX(-30%);
+    transform: translateX(-28%);
   }
 
   &.isSlide.prev {
