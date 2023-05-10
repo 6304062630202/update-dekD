@@ -1,0 +1,23 @@
+.dots {
+    display: flex;
+    bottom: 20px;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+  }
+  
+  .dot {
+    background-color: #ff9900;
+    height: 10px;
+    width: 8px;
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 3px #565656;
+    margin: 0 12px;
+    cursor: pointer;
+  }
+  .dot.dot-event {
+    background-color: #c1b2a1;
+  }

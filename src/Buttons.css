@@ -1,0 +1,22 @@
+.buttons-container {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container {
+  filter: drop-shadow(0px 0px 3px #565656);
+  color: rgba(0, 0, 0, 0.547);
+}
+.button-container.left {
+  margin-left: 30px;
+  font-size: 50px;
+}
+.button-container.right {
+  margin-right: 30px;
+  font-size: 50px;
+}

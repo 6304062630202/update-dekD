@@ -38,54 +38,6 @@
   display: none;
 }
 
-.buttons-container {
-  position: absolute;
-  top: 45%;
-  transform: translateY(-50%);
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.button-container {
-  filter: drop-shadow(0px 0px 3px #565656);
-  color: white;
-}
-.button-container.left {
-  margin-left: 30px;
-  font-size: 50px;
-}
-.button-container.right {
-  margin-right: 30px;
-  font-size: 50px;
-}
-
-.dots {
-  display: flex;
-  bottom: 20px;
-  margin-top: 20px;
-  justify-content: center;
-  align-items: center;
-  padding: 2px;
-}
-
-.dot {
-  background-color: #ff9900;
-  height: 10px;
-  width: 8px;
-  border-radius: 100%;
-  border: none;
-  outline: none;
-  box-shadow: 0px 0px 3px #565656;
-  margin: 0 12px;
-  cursor: pointer;
-}
-.dot.dot-event {
-  background-color: #c1b2a1;
-}
-
-
 @media (max-width: 1444px) {
   .container {
     max-width: 100%;
@@ -106,33 +58,6 @@
   .dot{
     margin: 0 12px;
     height: 11px;
-  }
-}
-
-@media (max-width: 1026px) {
-  .container {
-    max-width: 100%;
-  }
-  .slider-container img {
-    width: 50%;
-    height: auto;
-  }
-  .button-container.left {
-    font-size: 40px;
-    margin-left: 15px;
-  }
-  .button-container.right {
-    font-size: 40px;
-    margin-right: 15px;
-  }
-
-  .dots{
-    margin-top: 15px;
-  }
-
-  .dot{
-    margin: 0 10px;
-    height: 9px;
   }
 }
 
