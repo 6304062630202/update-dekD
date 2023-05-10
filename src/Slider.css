@@ -48,11 +48,11 @@
   }
   .button-container.left {
     font-size: 40px;
-    margin-left: 15px;
+    left: 15px;
   }
   .button-container.right {
     font-size: 40px;
-    margin-right: 15px;
+    right: 15px;
   }
 
   .dot{
@@ -73,11 +73,11 @@
   }
   .button-container.left {
     font-size: 30px;
-    margin-left: 15px;
+    left: 15px;
   }
   .button-container.right {
     font-size: 30px;
-    margin-right: 15px;
+    right: 15px;
   }
 
   .dots{
@@ -118,11 +118,11 @@
   }
   .button-container.left {
     font-size: 25px;
-    margin-left: 15px;
+    left: 15px;
   }
   .button-container.right {
     font-size: 25px;
-    margin-right: 15px;
+    right: 15px;
   }
 
   .dots{

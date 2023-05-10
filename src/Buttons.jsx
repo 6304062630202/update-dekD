@@ -4,7 +4,7 @@ import "./Buttons.css";
 
 const Buttons = ({ slidePrev, slideNext }) => {
   return (
-    <div className='buttons-container'>
+    <div>
       <div className='button-container left'>
         <BsArrowLeftCircleFill onClick={slidePrev} />
       </div>
